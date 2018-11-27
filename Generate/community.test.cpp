@@ -18,6 +18,9 @@ BOOST_AUTO_TEST_CASE(CommunityInit){
 
 }
 
+
+// Removed test case: incorrect to current interface
+/*
 BOOST_AUTO_TEST_CASE(CommunityConstruct){
 
   Community c(4,4);
@@ -45,4 +48,11 @@ BOOST_AUTO_TEST_CASE(CommunityConstruct){
     }
   }
   //BOOST_CHECK p_vect[i][j] = &p_vect[j];
+}
+*/
+
+BOOST_AUTO_TEST_CASE(CommunityCreate_Parks){
+  Community c(4);
+  c.Create_Parks();
+
 }

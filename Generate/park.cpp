@@ -20,6 +20,10 @@ bool operator==(const Park& p1, const Park& p2){
   return (&p1) == (&p2);
 }
 
+bool operator!=(const Park& p1, const Park& p2){
+  return (&p1) != (&p2);
+}
+
 
 std::ostream& operator<<(std::ostream& out, const Park& m)
 {

@@ -1,4 +1,6 @@
 #include "park.hpp"
+#include <iostream>
+#include <functional>
 #define BOOST_TEST_MODULE ParkTest
 #include <boost/test/unit_test.hpp>
 
@@ -19,7 +21,8 @@ BOOST_AUTO_TEST_CASE(ParkEquality){
   
   Park p1('a', 2);
   Park p2('b', 2);
-  
-  //BOOST_CHECK_PREDICATE(p1, p2);
+
+  std::cout << p1 << '\n';
+  BOOST_CHECK_PREDICATE(std::not_equal_to<Park> (), (p1)(p2));
   BOOST_CHECK_EQUAL(p1, p1);
 }

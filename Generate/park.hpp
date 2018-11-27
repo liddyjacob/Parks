@@ -1,6 +1,8 @@
 #pragma once 
 #include <iostream>
 
+/* The park class represents a park region and reqired trees*/
+
 class Park{
 public:
   Park(int n);
@@ -17,5 +19,6 @@ private:
 };
 
 bool operator==(const Park&, const Park&);
+bool operator!=(const Park&, const Park&);
 
 std::ostream& operator<<(std::ostream& out, const Park& m);

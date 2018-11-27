@@ -13,7 +13,6 @@ BOOST_AUTO_TEST_CASE(MatrixInit)
   BOOST_CHECK_EQUAL(mint.num_entries(), 9);
   BOOST_CHECK_EQUAL(mfloat.num_entries(), 8);
   BOOST_CHECK_EQUAL(mbool.num_entries(), 1);
-
 }
 
 /* Check if m[i][j] works */
@@ -36,6 +35,15 @@ BOOST_AUTO_TEST_CASE(MatrixEntryRetrieve)
       c++;
     }
   }
+
+  Matrix<bool> mb(2,2, false);
+  
+  for (int i = 0; i < mb.num_rows(); ++i){
+    for (int j = 0; j < m.num_cols(); ++j){
+      BOOST_CHECK_EQUAL(mb[i][j], false);
+    }
+  }
+  
 }
 
 /* Check matrix equality */

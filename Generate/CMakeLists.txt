@@ -12,8 +12,13 @@ IF (Boost_FOUND)
   ADD_DEFINITIONS( "-DHAS_BOOST" )
 ENDIF()
 
-add_library(libparks matrix.cpp)
+add_library(matlib matrix.cpp)
+add_library(parklib park.cpp)
 
 add_executable(matrixtest matrix.test.cpp)
-target_link_libraries(matrixtest LINK_PUBLIC libparks)
+target_link_libraries(matrixtest LINK_PUBLIC matlib)
 target_link_libraries(matrixtest LINK_PUBLIC ${Boost_LIBRARIES})
+
+add_executable(parkstest park.test.cpp)
+target_link_libraries(parkstest LINK_PUBLIC parklib)
+target_link_libraries(parkstest LINK_PUBLIC ${Boost_LIBRARIES})

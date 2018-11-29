@@ -2,8 +2,9 @@
 #include "matrix.hpp"
 #include "park.hpp"
 #include <vector>
+#include <utility>
 #include <cassert> // assert
-
+#include <initializer_list>
 ///
 /// A community is a matrix of parks.
 /// A communuty determines 
@@ -13,10 +14,12 @@ public:
   
   Community(); 
   Community(int rowcols);
-  Community(int rows, int cols);
 
-  // 1 indicates 
-  void Create_Parks();
+  // Assert there are as many rows as colsindicates 
+  void create_parks(int trees = 1);
+
+  void set_park(int, std::initializer_list<std::pair<int, int> >);
+  void set_park(int, std::vector<std::pair<int, int> >);
 
   ~Community();
 

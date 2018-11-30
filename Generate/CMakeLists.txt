@@ -12,6 +12,7 @@ IF (Boost_FOUND)
   ADD_DEFINITIONS( "-DHAS_BOOST" )
 ENDIF()
 
+add_library(ruleslib rules.cpp)
 add_library(matlib matrix.cpp)
 add_library(parklib park.cpp)
 add_library(communitylib community.cpp
@@ -29,3 +30,7 @@ target_link_libraries(parkstest LINK_PUBLIC ${Boost_LIBRARIES})
 add_executable(communitytest community.test.cpp)
 target_link_libraries(communitytest LINK_PUBLIC communitylib)
 target_link_libraries(communitytest LINK_PUBLIC ${Boost_LIBRARIES})
+
+add_executable(rulestest rules.test.cpp)
+target_link_libraries(rulestest LINK_PUBLIC ruleslib)
+target_link_libraries(rulestest LINK_PUBLIC ${Boost_LIBRARIES})

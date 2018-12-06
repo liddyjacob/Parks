@@ -75,6 +75,19 @@ Community::set_park(int park_id, std::vector<std::pair<int, int> > list){
   return;
 }
 
+void
+Community::set_rules(std::initializer_list<Rule*> list){
+  book = RuleBook(list); 
+}
+
+bool
+Community::is_solved_by(Solution s){
+  // Iterate through the rules in the rulebook
+  for (Rule* r : book){
+   if (r->breaks_rule(s, parks)) { return false; }
+  }
+  return true;
+}
 
 Community::~Community()
 {

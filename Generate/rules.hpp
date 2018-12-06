@@ -18,31 +18,52 @@
  */
 #include <vector>
 #include <cstdlib>
+#include <initializer_list>
+#include "solution.hpp"
+#include "park.hpp"
 
 using std::size_t;
 
 struct Rule{
 
-
   enum Kind{
     trees_across,
-    tree_root_radius
+    tree_radius
   };
 
   Rule(Kind k);
   Kind kind;
+
+  virtual bool breaks_rule(Solution, std::vector<Park*>) = 0;
 };
 
 struct TreesAcross : public Rule{
   TreesAcross(size_t);
   size_t num;
+
+  bool breaks_rule(Solution, std::vector<Park*>) override;
 };
 
-struct TreeRootRadius : public Rule{
-  TreeRootRadius(size_t);
+struct TreeRadius : public Rule{
+  TreeRadius(size_t);
+  size_t radius;
+
+  bool breaks_rule(Solution, std::vector<Park*>) override;
 };
+
 
 // A collection of rules
 class RuleBook : public std::vector<Rule*>{
+public:
+  // Default rulebook
+  RuleBook();
 
+  // Initializer rulebook
+  RuleBook(std::initializer_list<Rule*>);
+
+ //Check the rules o 
+  //bool validate(Solution, );
+  RuleBook& operator=(const RuleBook& rhs);
+  
+private:
 };

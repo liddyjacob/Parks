@@ -20,40 +20,16 @@ BOOST_AUTO_TEST_CASE(CommunityInit){
 }
 
 
-// Removed test case: incorrect to current interface
-/*
-BOOST_AUTO_TEST_CASE(CommunityConstruct){
-
-  Community c(4,4);
-
-  std::vector<Park*> p_vect = {new Park('A'), new Park('B'), new Park('C'), new Park('D')};
-  // Construct the park:
-  // A B C D
-  // A B C D
-  // A B C D
-  // A B C D
-
-  for (int i = 0; i < c.num_rows(); ++i)
-    for (int j = 0; j < c.num_cols(); ++j)
-      c[i][j] = p_vect[j];
-
-  std::cout << c;
-
-  for (int i = 0; i < c.num_rows(); ++i){
-    for (int j = 0; j < c.num_cols(); ++j){
-      int next_i = (i + 1) % c.num_rows();
-      int next_j = (j + 1) % c.num_cols();
-
-      BOOST_CHECK_EQUAL(c[i][j], c[next_i][j]);
-      BOOST_CHECK_PREDICATE(std::not_equal_to<Park> (), (*c[i][j])(*c[i][next_j]));
-    }
-  }
-  //BOOST_CHECK p_vect[i][j] = &p_vect[j];
-}
-*/
 
 BOOST_AUTO_TEST_CASE(CommunityCreate_Parks){
+  
+  // Construct the park: c = d = 
+  // A B C D
+  // A B C D
+  // A B C D
+  // A B C D
   Community c(4);
+
   Community d(4);
   c.create_parks();
   d.create_parks();
@@ -84,3 +60,36 @@ BOOST_AUTO_TEST_CASE(CommunityCreate_Parks){
     }
   }
  }
+
+BOOST_AUTO_TEST_CASE(communitySetRules){
+
+  Community c(5);
+  c.create_parks();
+  
+  for (int i = 0; i < c.num_rows(); ++i){
+    c.set_park(i, 
+        {std::make_pair(0,i), 
+         std::make_pair(1,i),
+         std::make_pair(2,i),
+         std::make_pair(3,i),
+         std::make_pair(4,i)});
+  }
+
+  Rule* r1 = new TreesAcross(1);
+  Rule* r2 = new TreeRadius(1);
+  
+  c.set_rules({r1, r2});
+
+  Solution s(5,5);
+  
+  s[0][0] = State::Tree;
+  s[1][3] = State::Tree;
+  s[2][1] = State::Tree;
+  s[3][4] = State::Tree;
+  s[4][0] = State::Tree;
+  
+  BOOST_CHECK(c.is_solved_by(s));
+  s[0][1] = State::Tree;
+  BOOST_CHECK(!c.is_solved_by(s));
+
+}

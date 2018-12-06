@@ -1,6 +1,8 @@
+#pragma once
 #include "matrix.hpp"
 #include "state.hpp"
 
-using Solution = Matrix<State>; 
+// TODO: change to class
+using Solution = Matrix<State>;
 
-
+//class Solution : public Matrix<State>;

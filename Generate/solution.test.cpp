@@ -1,12 +1,13 @@
-#include "rules.hpp"
+
 #define BOOST_TEST_MODULE SolutionTest
 #include <boost/test/unit_test.hpp>
 
 /* Check initialization and num_entries */
 BOOST_AUTO_TEST_CASE(SolutionInit)
 {
-  Rule* r1 = new TreesAcross(3);
-  Rule* r2 = new TreeRadius(1);
+  Rules r = {TREES_PER_ROW(1)};   
+  //                        rows, trees per row/col           
+  Solution s = random_solution(4, );
 
 
 }

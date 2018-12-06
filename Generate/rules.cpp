@@ -11,6 +11,7 @@ TreesAcross::TreesAcross(size_t s)
   : Rule(trees_across), num(s)
 {}
 
+#include <iostream>
 // Breaks the rules or not?
 bool 
 TreesAcross::breaks_rule(Solution s, Community& c){
@@ -31,6 +32,7 @@ TreesAcross::breaks_rule(Solution s, Community& c){
     int num_col_found = 0;
     
     for(size_t j = 0; j < c.num_cols(); ++j){
+  
       if (s[i][j] == State::Tree){
         // Found a tree in row i
         num_row_found += 1;

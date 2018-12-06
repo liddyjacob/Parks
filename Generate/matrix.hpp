@@ -32,10 +32,14 @@ public:
     std::fill(mat.begin(), mat.end(), dummy_row);
   }
 
+  // Total number of entries
   size_t num_entries() const { return rows * cols; }
+
+  // Get number of rows and number of entries resp.
   size_t num_rows() const { return rows; }
   size_t num_cols() const { return cols; }
 
+  // You returns a row, so that you can get a col.
   std::vector<T>& operator[](size_t row) { return mat[row]; } 
   std::vector<T> operator[](size_t row) const { return mat[row]; }  
 

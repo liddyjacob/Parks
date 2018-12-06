@@ -22,6 +22,8 @@
 #include "solution.hpp"
 #include "park.hpp"
 
+class Community;
+
 using std::size_t;
 
 struct Rule{
@@ -34,21 +36,21 @@ struct Rule{
   Rule(Kind k);
   Kind kind;
 
-  virtual bool breaks_rule(Solution, std::vector<Park*>) = 0;
+  virtual bool breaks_rule(Solution, Community&) = 0;
 };
 
 struct TreesAcross : public Rule{
   TreesAcross(size_t);
   size_t num;
 
-  bool breaks_rule(Solution, std::vector<Park*>) override;
+  bool breaks_rule(Solution, Community&) override;
 };
 
 struct TreeRadius : public Rule{
   TreeRadius(size_t);
   size_t radius;
 
-  bool breaks_rule(Solution, std::vector<Park*>) override;
+  bool breaks_rule(Solution, Community&) override;
 };
 
 

@@ -21,6 +21,8 @@ public:
 
   void set_park(int, std::initializer_list<std::pair<int, int> >);
   void set_park(int, std::vector<std::pair<int, int> >);
+  
+  std::vector<Park*> get_parks() const { return parks; }
 
   void set_rules(std::initializer_list<Rule*>);
 

@@ -12,6 +12,15 @@
 using std::size_t;
 
 
+/*
+ * 00
+ * 10
+ * 20
+ * 30
+ * 40
+ *
+ */
+
 template <typename T>
 class Matrix{ 
 public:

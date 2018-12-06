@@ -11,7 +11,6 @@ TreesAcross::TreesAcross(size_t s)
   : Rule(trees_across), num(s)
 {}
 
-#include <iostream>
 // Breaks the rules or not?
 bool 
 TreesAcross::breaks_rule(Solution s, Community& c){
@@ -25,10 +24,8 @@ TreesAcross::breaks_rule(Solution s, Community& c){
   // Loop through an i and j variable
   for(size_t i = 0; i < c.num_rows(); ++i){
     
-    // Set row i trees to 0
+    // Set row/col i trees to 0
     int num_row_found = 0;
-
-    // Set column i trees to 0
     int num_col_found = 0;
     
     for(size_t j = 0; j < c.num_cols(); ++j){
@@ -66,8 +63,11 @@ TreeRadius::TreeRadius(size_t r)
   : Rule(tree_radius), radius(r)
 { }
 
+
 bool 
 TreeRadius::breaks_rule(Solution s, Community& c){
+
+
   return false;
 }
 

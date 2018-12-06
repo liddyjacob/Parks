@@ -88,8 +88,10 @@ bool
 Community::is_solved_by(Solution s){
   // Iterate through the rules in the rulebook
   for (Rule* r : book){
-   if (r->breaks_rule(s, *this)) { return false; }
+    bool broken = r->breaks_rule(s, *this);
+    if (broken) { return false; }
   }
+
   return true;
 }
 

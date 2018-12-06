@@ -39,10 +39,12 @@ Community::set_park(int park_id, std::initializer_list<std::pair<int, int> > lis
       std::cerr << "coordinate (" << i  << ", " << j << ") is out of range!\n";
       std::abort();
     }
+    
     if (j >= num_cols()) {
       std::cerr << "coordinate (" << i  << ", " << j << ") is out of range!\n";
       std::abort();
     }
+    
     (*this)[i][j] = parks[park_id];
   }
 
@@ -65,10 +67,12 @@ Community::set_park(int park_id, std::vector<std::pair<int, int> > list){
       std::cerr << "coordinate (" << i  << ", " << j << ") is out of range!\n";
       std::abort();
     }
+    
     if (j >= num_cols()) {
       std::cerr << "coordinate (" << i  << ", " << j << ") is out of range!\n";
       std::abort();
     }
+
     (*this)[i][j] = parks[park_id];
   }
 
@@ -91,20 +95,9 @@ Community::is_solved_by(Solution s){
 
 Community::~Community()
 {
-
   for (Park* p : parks){
     delete p;
   }
-
-  /*
-  for (int i = 0; i < num_rows(); ++i){
-    for (int j = 0; j < num_cols(); ++j){
-      if ( (*this)[i][j] ) { delete (*this)[i][j]; }
-    }
-  }
-  */
-
-
   return;
 }
 

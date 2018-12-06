@@ -2,7 +2,11 @@
 #include "matrix.hpp"
 #include "state.hpp"
 
-// TODO: change to class
-using Solution = Matrix<State>;
+
+struct Solution : public Matrix<State>{
+
+  Solution(int n);
+
+};
 
 //class Solution : public Matrix<State>;

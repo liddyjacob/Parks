@@ -17,7 +17,8 @@ add_library(matlib matrix.cpp)
 add_library(parklib park.cpp)
 add_library(communitylib community.cpp
                          matrix.cpp
-                         park.cpp)
+                         park.cpp
+                         solution.cpp)
 
                        #add_library(solutionlib rules.cpp
                        #solution.cpp)

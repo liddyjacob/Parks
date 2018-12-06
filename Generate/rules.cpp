@@ -9,7 +9,7 @@ TreesAcross::TreesAcross(size_t s)
 {}
 
 bool 
-TreesAcross::breaks_rule(Solution, std::vector<Park*>){
+TreesAcross::breaks_rule(Solution s, std::vector<Park*> parks){
   return false;
 }
 
@@ -18,7 +18,7 @@ TreeRadius::TreeRadius(size_t r)
 { }
 
 bool 
-TreeRadius::breaks_rule(Solution, std::vector<Park*>){
+TreeRadius::breaks_rule(Solution s, std::vector<Park*> parks){
   return false;
 }
 

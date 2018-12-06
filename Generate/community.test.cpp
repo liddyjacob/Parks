@@ -80,7 +80,7 @@ BOOST_AUTO_TEST_CASE(communitySetRules){
   
   c.set_rules({r1, r2});
 
-  Solution s(5,5);
+  Solution s(5);
   
   s[0][0] = State::Tree;
   s[1][3] = State::Tree;

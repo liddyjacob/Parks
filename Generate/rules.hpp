@@ -18,6 +18,7 @@
  */
 #include <vector>
 #include <cstdlib>
+#include <utility>
 #include <initializer_list>
 #include "solution.hpp"
 #include "park.hpp"
@@ -69,3 +70,5 @@ public:
   
 private:
 };
+
+std::vector<std::pair<int, int> > within_radius(int, std::pair<int, int>, int);

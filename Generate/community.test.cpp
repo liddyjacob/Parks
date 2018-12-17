@@ -170,3 +170,64 @@ BOOST_AUTO_TEST_CASE(communityNonTrivialSolution){
   
   BOOST_CHECK(!(c.is_solved_by(nots)));
 }
+
+BOOST_AUTO_TEST_CASE(communityNonDiagonalSolution){
+  
+  Community c(5);
+  c.create_parks();
+  
+  /*
+   * A C D D D
+   * A C D D E
+   * B C D D E
+   * B B B E E
+   * B B B B E
+   */
+
+  c.set_park(0, 
+      {std::make_pair(0,0),
+       std::make_pair(1,0)});
+  c.set_park(1,
+      {std::make_pair(2,0),
+       std::make_pair(3,0),
+       std::make_pair(4,0),
+       std::make_pair(3,1),
+       std::make_pair(4,1),
+       std::make_pair(3,2),
+       std::make_pair(4,2),
+       std::make_pair(4,3)});
+  c.set_park(2,
+      {std::make_pair(0,1),
+       std::make_pair(1,1),
+       std::make_pair(2,1)});
+  c.set_park(3,
+      {std::make_pair(0,2),
+       std::make_pair(1,2),
+       std::make_pair(2,2),
+       std::make_pair(0,3),
+       std::make_pair(1,3),
+       std::make_pair(2,3),
+       std::make_pair(0,4)});
+  c.set_park(4,
+      {std::make_pair(3,3),
+       std::make_pair(1,4),
+       std::make_pair(2,4),
+       std::make_pair(3,4),
+       std::make_pair(4,4)}); 
+
+  Rule* r1 = new TreesAcross(1);
+  Rule* r2 = new TreeRadius(1);
+  
+  c.set_rules({r1, r2});
+  Solution nots(5);
+ 
+  BOOST_CHECK(!(c.is_solved_by(nots)));
+  
+  nots[0][0] = State::Tree;
+  nots[1][1] = State::Tree;
+  nots[2][2] = State::Tree;
+  nots[3][4] = State::Tree;
+  nots[4][3] = State::Tree;
+  
+  BOOST_CHECK(!(c.is_solved_by(nots)));
+}

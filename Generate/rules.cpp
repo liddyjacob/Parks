@@ -66,7 +66,19 @@ TreeRadius::TreeRadius(size_t r)
 
 bool 
 TreeRadius::breaks_rule(Solution s, Community& c){
+  for(int i = 0; i < c.num_rows(); ++i){ 
+    for(int j = 0; j < c.num_cols(); ++j){
+      if (s[i][j] == State::Tree){
+        for (std::pair<int, int> near_point : within_radius(radius, std::make_pair(i, j), c.num_cols() )){
+          
+          int i2 = near_point.first;
+          int j2 = near_point.second;
 
+          if (s[i2][j2] == State::Tree){ return true; }
+        }
+      }
+    }
+  }
 
   return false;
 }
@@ -87,4 +99,28 @@ RuleBook::operator=(const RuleBook& rhs)
 {
   std::vector<Rule*>::operator = (rhs);
   return *this;
-}  
+}
+
+std::vector<std::pair<int, int> > within_radius(int r, std::pair<int, int> point, int max){
+  
+  std::vector<std::pair<int, int> > points;
+
+  int i = point.first;
+  int j = point.second;
+  std::cerr << "Checking point (" << i << ", " << j << ")\n";
+  
+  // di, dj: Differential i, differential j
+  for (int di = -r; di <= r; ++di){
+    for (int dj = -r; dj <= r; ++dj){
+      if ((i + di < 0) || (j + dj < 0)) { continue; }
+      if ((i + di >= max) || (j + dj >= max)) { continue; }
+      if ((di == 0) && (dj == 0)){ continue; }
+
+      std::cerr << "  Adding (" << i + di  << ", " << j + dj << ")\n";
+      points.push_back(std::make_pair(i + di, j + dj)); 
+    
+    }
+  }
+
+  return points;
+}

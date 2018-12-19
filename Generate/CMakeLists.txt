@@ -16,9 +16,16 @@ add_library(ruleslib rules.cpp)
 add_library(matlib matrix.cpp)
 add_library(parklib park.cpp)
 add_library(communitylib community.cpp
+                         utilities.cpp
+                         state.cpp
                          matrix.cpp
                          park.cpp
-                         solution.cpp)
+                         solution.cpp
+                         generate_solution.cpp
+                         rules.cpp
+                         rand.cpp
+                         )
+
 
                        #add_library(solutionlib rules.cpp
                        #solution.cpp)
@@ -37,5 +44,9 @@ target_link_libraries(communitytest LINK_PUBLIC ${Boost_LIBRARIES})
 target_link_libraries(communitytest LINK_PUBLIC ruleslib)
 
 add_executable(rulestest rules.test.cpp)
-target_link_libraries(rulestest LINK_PUBLIC ruleslib)
+target_link_libraries(rulestest LINK_PUBLIC communitylib)
 target_link_libraries(rulestest LINK_PUBLIC ${Boost_LIBRARIES})
+
+add_executable(generatetest generate_solution.test.cpp)
+target_link_libraries(generatetest LINK_PUBLIC communitylib)
+target_link_libraries(generatetest LINK_PUBLIC ${Boost_LIBRARIES})

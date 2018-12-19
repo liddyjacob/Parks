@@ -41,6 +41,8 @@ public:
     std::fill(mat.begin(), mat.end(), dummy_row);
   }
 
+  
+
   // Total number of entries
   size_t num_entries() const { return rows * cols; }
 
